@@ -48,6 +48,13 @@ wrap.onclick=e=>{
     apply();
   }};}
 function renderProducts(){let q=$('search').value.toLowerCase();let list=db.products.filter(p=>(selectedCategory==='Todos'||p.category===selectedCategory)&&(!q||(p.name+' '+p.description+' '+p.store).toLowerCase().includes(q)));$('products').innerHTML=list.map(p=>productCard(p)).join('');$('noProducts').classList.toggle('hidden',list.length>0);$('countProducts').textContent=db.products.length;$('countStores').textContent=new Set(db.products.map(p=>p.owner)).size;document.querySelectorAll('[data-contact]').forEach(b=>b.onclick=()=>contact(b.dataset.contact))}
+
+/* Sincronización con Supabase: mezcla los productos de la nube con los locales.
+   Si las tablas de Supabase aún no existen, simplemente se muestra el catálogo local. */
+import { cloudProducts } from './supabase-sync.js';
+let cloudLoaded=false;
+async function syncCloud(){try{const cloud=await cloudProducts();if(cloud.length){const localIds=new Set(db.products.map(p=>p.id));db.products=cloud.filter(p=>!localIds.has(p.id)).concat(db.products);save();renderProducts();toast('☁ '+cloud.length+' productos sincronizados desde la nube.')}}catch(e){console.warn(e)}}
+setTimeout(()=>{if(!cloudLoaded){cloudLoaded=true;syncCloud()}},800);
 function openModal(html){$('modalBody').innerHTML=html;$('modal').classList.remove('hidden')}
 function closeModal(){$('modal').classList.add('hidden')}
 $('closeModal').onclick=closeModal;
