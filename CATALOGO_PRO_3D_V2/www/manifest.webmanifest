@@ -1,0 +1,17 @@
+{
+  "name": "CATÁLOGO PRO 3D V3",
+  "short_name": "CATÁLOGO PRO",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#10152c",
+  "description": "Marketplace de productos y tiendas",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

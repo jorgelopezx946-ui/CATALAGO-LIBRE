@@ -1,0 +1,10 @@
+CATÁLOGO PRO 3D V3
+
+1) Extrae la carpeta CATALOGO_PRO_3D_V2.
+2) Abre PowerShell dentro de esa carpeta.
+3) Ejecuta: npm install
+4) Ejecuta: npm run start
+5) Abre la URL local indicada por Vite.
+
+Para ver instrucciones Android y limitaciones importantes, abre README.txt.
+La V3 es funcional como prototipo local. Para marketplace real compartido entre clientes y vendedores falta conectar un backend seguro.

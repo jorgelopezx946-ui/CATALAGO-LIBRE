@@ -1,0 +1,6 @@
+CATÁLOGO PRO 3D V4 MULTITIENDA
+
+1. Extrae este ZIP.
+2. Abre CATALOGO_PRO_3D_V3/CATALOGO_PRO_3D_V2.
+3. Consulta README_V4.txt en la carpeta CATALOGO_PRO_3D_V3 para instalación, alcance y conexión de Supabase.
+4. Esta entrega conserva el prototipo V3 y añade la primera base V4; aún no es un marketplace conectado a la nube.
