@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0878e8">
+<meta name="description" content="CATÁLOGO DE VENTA: descubre productos y tiendas.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>CATÁLOGO LIBRE· Multitienda</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="bar">
+  <a class="logo" href="#"><span>✦</span> CATÁLOGO <b>DE VENTAS LIBRE</b></a>
+  <div class="bar-actions">
+    <span id="userBadge" class="user-badge">Visitante</span>
+    <button class="btn ghost small" id="notifBtn" aria-label="Notificaciones" title="Notificaciones">🔔 <span id="notifCount" class="hidden">0</span></button>
+    <button class="btn ghost small" id="themeBtn" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">🌙</button>
+    <button class="btn ghost small" id="cartBtn" aria-label="Carrito">🛒 <span id="cartCount">0</span></button>
+    <button class="btn ghost small" id="wishBtn" aria-label="Favoritos">♡ <span id="wishCount">0</span></button>
+    <button class="btn ghost small" id="loginBtn">Ingresar</button>
+    <button class="btn primary small" id="registerBtn">Crear cuenta</button>
+    <button class="btn ghost small hidden" id="logoutBtn">Salir</button>
+  </div>
+</header>
+<div class="banner3d-wrap">
+  <div class="banner3d">
+    <div class="b3-face b3-front">
+      <span class="b3-spark">✦</span>
+      <div class="b3-text"><strong>Bienvenido a CATÁLOGO LIBRE </strong><small> Productos con presentación tridimensional · fotos con zoom · contacto directo por WhatsApp</small></div>
+      <button class="btn primary small" id="bannerCta">Ver catálogo</button>
+    </div>
+  </div>
+</div>
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">MARKETPLACE • TU MERCADO DIGITAL</div>
+    <h1>Descubre productos.<br><em>Conecta con tiendas.</em></h1>
+    <p>Explora ropa, sublimación, accesorios y productos personalizados. Puedes mirar sin registrarte; para consultar por WhatsApp, crea tu cuenta.</p>
+    <div class="actions"><button class="btn primary" id="exploreBtn">Explorar catálogo ↓</button><button class="btn ghost" id="sellerBtn">Quiero vender</button></div>
+    <div class="stats"><div><b id="countProducts">0</b><small>Productos</small></div><div><b id="countStores">0</b><small>Tiendas</small></div><div><b>24/7</b><small>Catálogo abierto</small></div></div>
+  </div>
+  <div class="hero-visual"><div class="glass-orb"><span>🛍️</span></div><div class="float-card">TU TIENDA<br><strong> LIBRE</strong></div><div class="float-dot">✦</div></div>
+</section>
+<section id="catalog" class="catalog">
+  <div class="section-head"><div><div class="eyebrow">CATÁLOGO PÚBLICO</div><h2>Explora productos</h2><p class="muted">Mira los productos de todas las tiendas.</p></div><input id="search" class="search" placeholder="Buscar productos..."></div>
+  <div id="filters" class="filters"></div>
+  <div class="filters advanced-filters">
+    <select id="filterStore" aria-label="Filtrar por tienda"><option value="">🏬 Todas las tiendas</option></select>
+    <input id="filterMin" type="number" min="0" step="0.01" placeholder="💲 Precio mínimo">
+    <input id="filterMax" type="number" min="0" step="0.01" placeholder="💲 Precio máximo">
+    <select id="filterSort" aria-label="Ordenar">
+      <option value="new">Ordenar: Más recientes</option>
+      <option value="priceAsc">Precio: menor a mayor</option>
+      <option value="priceDesc">Precio: mayor a menor</option>
+      <option value="name">Nombre (A-Z)</option>
+    </select>
+    <label class="filter-check"><input type="checkbox" id="filterOffers"> 🔥 Solo ofertas</label>
+    <label class="filter-check"><input type="checkbox" id="filterFavs"> ♥ Solo favoritos</label>
+  </div>
+  <div id="products" class="product-grid"></div>
+  <div id="noProducts" class="empty hidden">No encontramos productos con esos filtros.</div>
+  <section id="featuredPane" class="featured-pane">
+    <div class="eyebrow">CATÁLOGO PRO</div><h2>🔥 Ofertas y destacados</h2>
+    <p class="muted">Los productos con descuento y lo más pedido de cada tienda.</p>
+    <div id="offersGrid" class="product-grid"></div>
+    <h3 class="featured-sub">⭐ Productos destacados</h3>
+    <div id="featuredGrid" class="product-grid"></div>
+  </section>
+  <section id="storesShowcase" class="stores-showcase">
+    <div class="eyebrow">COMUNIDAD COMERCIAL</div><h2>Compra en tiendas locales</h2>
+    <p class="muted">Descubre vendedores y productos publicados en el marketplace.</p>
+    <div id="storeCards" class="store-grid"></div>
+  </section>
+  <section id="storeProfile" class="store-profile hidden">
+    <button class="btn ghost small" id="backToCatalog">← Volver al catálogo</button>
+    <div id="storeProfileBody"></div>
+    <div id="storeProfileProducts" class="product-grid"></div>
+    <div id="storeProfileReviews"></div>
+    <div id="storeProfileQa"></div>
+  </section>
+</section>
+<section id="dashboard" class="dashboard hidden">
+  <div class="section-head"><div><div class="eyebrow">ESPACIO PRIVADO</div><h2 id="dashTitle">Mi cuenta</h2><p class="muted">Administra tu tienda y tus productos.</p></div><span class="secure-pill">● Sesión local de demostración</span></div>
+  <div class="stats-panel"><div><small>Mis productos</small><b id="myCount">0</b></div><div><small>Tipo de cuenta</small><b id="myRole">Cliente</b></div><div><small>Mi tienda</small><b id="myStore">—</b></div></div>
+  <div class="tabs"><button class="tab active" data-tab="myProducts">Mis productos</button><button class="tab" data-tab="addProduct" id="addTab">Publicar producto</button><button class="tab" data-tab="settings">Mi tienda / WhatsApp</button><button class="tab" data-tab="ordersPane">Mis pedidos</button><button class="tab" data-tab="security">Seguridad y biometría</button></div>
+  <div id="myProducts" class="pane"><div id="sellerAlerts"></div><div id="sellerProducts" class="product-grid"></div></div>
+  <div id="addProduct" class="pane hidden">
+    <form id="productForm" class="panel form">
+      <h3>Publicar producto</h3>
+      <div class="two"><label>Nombre<input id="pName" required maxlength="80"></label><label>Categoría<select id="pCategory"><option>Ropa</option><option>Sublimación</option><option>Accesorios</option><option>Hogar</option><option>Otros</option></select></label></div>
+      <div class="two"><label>Precio normal USD<input id="pPrice" type="number" min="0" step=".01" required></label><label>Precio de oferta USD (opcional, menor al normal)<input id="pSale" type="number" min="0" step=".01" placeholder="Deja vacío si no hay oferta"></label></div>
+      <div class="two"><label>Existencias<input id="pStock" type="number" min="0" value="1"></label><label class="filter-check" style="justify-content:center"><input type="checkbox" id="pFeatured"> ⭐ Marcar como destacado</label></div>
+      <div class="two"><label>Tallas<input id="pSizes" placeholder="S, M, L, XL, XXL"></label><label>Colores<input id="pColors" placeholder="Negro, blanco, azul"></label></div>
+      <label>Descripción<textarea id="pDescription" rows="3"></textarea></label>
+      <div class="photos-field">
+        <span class="photos-label">Fotografías del producto</span>
+        <input id="pImage" type="file" accept="image/*" multiple hidden>
+        <button type="button" class="btn-3d-photos" id="pickPhotosBtn">📷 Elegir fotografías</button>
+        <p class="tiny muted">Puedes seleccionar una o varias fotos del producto (hasta 8).</p>
+        <div id="pImagesPreview" class="form-images-preview"></div>
+      </div>
+      <button class="btn primary">Guardar producto</button>
+    </form>
+  </div>
+
+  <div id="settings" class="pane hidden">
+    <form id="storeForm" class="panel form">
+      <h3>Datos de mi tienda</h3>
+      <label>Nombre de la tienda<input id="storeName" required></label>
+      <label>WhatsApp con código de país<input id="storeWhatsapp" placeholder="50370000000"></label>
+      <p class="muted tiny">Escribe solo números, incluyendo el código de país. Ejemplo de El Salvador: 503XXXXXXXX.</p>
+      <button class="btn primary">Guardar cambios</button>
+    </form>
+  </div>
+  <div id="ordersPane" class="pane hidden"><div class="panel form"><h3>Mis pedidos</h3><div id="myOrders"></div></div></div>
+  <div id="security" class="pane hidden">
+    <div class="panel security-panel">
+      <div class="security-icon">♧</div><div><h3>Acceso biométrico</h3><p class="muted">Activa la huella o el reconocimiento facial que admita tu dispositivo. El sistema operativo muestra el método disponible; la aplicación no recibe ni almacena tu huella o rostro.</p></div>
+      <div id="bioStatus" class="notice">Comprobando compatibilidad...</div>
+      <button class="btn primary" id="enableBio">Activar acceso biométrico</button>
+      <button class="btn ghost" id="testBio">Probar autenticación</button>
+      <p class="tiny muted">En Android APK se utiliza el diálogo biométrico nativo. En web se utiliza WebAuthn si el navegador, el dispositivo y el origen seguro lo permiten.</p>
+    </div>
+  </div>
+</section>
+<footer>CATÁLOGO DE VENTA· Aplicación web instalable y proyecto Android</footer>
+</main>
+
+<!-- VISOR DE IMAGEN DEL PRODUCTO -->
+<div id="imageViewer" class="image-viewer hidden">
+  <button class="viewer-close" id="viewerClose">✕</button>
+  <button class="viewer-prev" id="viewerPrev">❮</button>
+
+  <div class="viewer-content">
+    <img id="viewerImage" src="" alt="Imagen del producto">
+    <h3 id="viewerTitle">Producto</h3>
+  </div>
+
+  <button class="viewer-next" id="viewerNext">❯</button>
+  <div class="viewer-counter" id="viewerCounter"></div>
+</div>
+<div id="modal" class="modal hidden"><div class="modal-card panel"><button class="close" id="closeModal">×</button><div id="modalBody"></div></div></div>
+<div id="toast" class="toast"></div>
+<script type="module" src="app.js"></script>
+</body></html>
