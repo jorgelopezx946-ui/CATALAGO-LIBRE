@@ -15,6 +15,7 @@
   <a class="logo" href="#"><span>✦</span> CATÁLOGO <b>DE VENTAS LIBRE</b></a>
   <div class="bar-actions">
     <span id="userBadge" class="user-badge">Visitante</span>
+    <button class="btn ghost small" id="notifBtn" aria-label="Notificaciones" title="Notificaciones">🔔 <span id="notifCount" class="hidden">0</span></button>
     <button class="btn ghost small" id="themeBtn" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">🌙</button>
     <button class="btn ghost small" id="cartBtn" aria-label="Carrito">🛒 <span id="cartCount">0</span></button>
     <button class="btn ghost small" id="wishBtn" aria-label="Favoritos">♡ <span id="wishCount">0</span></button>
@@ -72,6 +73,13 @@
     <div class="eyebrow">COMUNIDAD COMERCIAL</div><h2>Compra en tiendas locales</h2>
     <p class="muted">Descubre vendedores y productos publicados en el marketplace.</p>
     <div id="storeCards" class="store-grid"></div>
+  </section>
+  <section id="storeProfile" class="store-profile hidden">
+    <button class="btn ghost small" id="backToCatalog">← Volver al catálogo</button>
+    <div id="storeProfileBody"></div>
+    <div id="storeProfileProducts" class="product-grid"></div>
+    <div id="storeProfileReviews"></div>
+    <div id="storeProfileQa"></div>
   </section>
 </section>
 <section id="dashboard" class="dashboard hidden">
